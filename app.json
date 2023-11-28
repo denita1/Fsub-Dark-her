@@ -8,9 +8,6 @@
     "CHANNEL_DB": {
       "required": true
     },
-    "DATABASE_URL": {
-      "required": true
-    },
     "ADMINS": {
       "required": true
     },
@@ -19,13 +16,6 @@
     },
     "FORCE_SUB_2": {
       "required": false
-    },
-    "FORCE_SUB_3": {
-      "required": false
-    },
-    "FORCE_SUB_4": {
-      "required": false
-    }
   },
   "formation": {
     "worker": {
