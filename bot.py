@@ -11,8 +11,6 @@ from config import (
     CHANNEL_DB,
     FORCE_SUB_1,
     FORCE_SUB_2,
-    FORCE_SUB_3,
-    FORCE_SUB_4,
     LOGGER,
     BOT_TOKEN,
     WORKERS,
@@ -83,52 +81,8 @@ class Bot(Client):
                 self.LOGGER(__name__).warning(
                     f"Pastikan @{self.username} "
                     "menjadi Admin di FORCE_SUB_2\n\n"
-                )
-                sys.exit()
-        if FORCE_SUB_3:
-            try:
-                info = await self.get_chat(FORCE_SUB_3)
-                link = info.invite_link
-                if not link:
-                    await self.export_chat_invite_link(FORCE_SUB_1)
-                    link = info.invite_link
-                self.invitelink3 = link
-                self.LOGGER(__name__).info(
-                    "FORCE_SUB_3 Detected!\n"
-                    f"  Title: {info.title}\n"
-                    f"  Chat ID: {info.id}\n\n"
-                )
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning(
-                    f"Pastikan @{self.username} "
-                    "menjadi Admin di FORCE_SUB_3\n\n"
-                )
-                sys.exit()
-        if FORCE_SUB_4:
-            try:
-                info = await self.get_chat(FORCE_SUB_4)
-                link = info.invite_link
-                if not link:
-                    await self.export_chat_invite_link(FORCE_SUB_4)
-                    link = info.invite_link
-                self.invitelink4 = link
-                self.LOGGER(__name__).info(
-                    "FORCE_SUB_4 Detected!\n"
-                    f"  Title: {info.title}\n"
-                    f"  Chat ID: {info.id}\n\n"
-                )
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning(
-                    f"Pastikan @{self.username} "
-                    "menjadi Admin di FORCE_SUB_4\n\n"
-                )
-                sys.exit()
-
-
-        try:
-            db_channel = await self.get_chat(CHANNEL_DB)
+        try:            db_channel = await self.get_chat(CHANNEL_DB)
+        
             self.db_channel = db_channel
             test = await self.send_message(chat_id=db_channel.id, text="Bot Aktif!\n\n")
             await test.delete()
